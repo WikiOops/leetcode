@@ -21,6 +21,41 @@ Intern@IEG.MSRA
 #include<set>
 using namespace std;
 
+/*
+How to serialize a tree and build a tree
+
+initialize serialized tree
+   1
+  / \
+ 2   3
+    /
+   4
+    \
+     5
+The above binary tree is serialized as "{1,2,3,#,#,4,#,#,5}".
+The above binary tree is pre_order serialized as "{1,2,#,#,3,4,#,5}".
+
+1.1 you can build a tree with a level serialized vector as below£º
+int num[] = {1,2,3,e,e,4,e,e,5};
+vector<int> vec(num, num+sizeof(num)/sizeof(int));
+TreeNode *root = initializeTree<TreeNode>(vec);
+
+1.2 if your compiler support New Feature "initializer list", you can build it like this£º
+vector<int> vec = {1,2,3,e,e,4,e,e,5};
+TreeNode *root = initializeTree<TreeNode>(vec);
+
+1.3 you can also use a preorder serialized list to build a tree:
+vector<int> vec = {1,2,#,#,3,4,#,5};
+TreeNode *root = initializeTree<TreeNode>(vec);
+
+1.4 you can serialize a tree to a level-order serialized list and pre-order serialized list:
+vector<int> res;
+serialization<TreeNode>(res, root);
+or
+serialization_pre_order<TreeNode>(res, root);
+*/
+
+
 //old version
 //template<class ForwardIterator>
 //vector<int> unique_count(ForwardIterator first, ForwardIterator last)
